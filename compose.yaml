@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ddns:
+    image: python
+    container_name: ddns
+    restart: unless-stopped
+    stdin_open: true 
+    tty: true
+    volumes:
+      - ddns_script:/ddns_script
+    command: bash /ddns_script/dockercommand.sh
+volumes:
+  ddns_script:

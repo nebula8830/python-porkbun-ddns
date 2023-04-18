@@ -9,7 +9,6 @@ def getRecords(domain): #grab all the records so we know which ones to delete to
 	allRecords=json.loads(requests.post(apiConfig["endpoint"] + '/dns/retrieve/' + domain, data = json.dumps(apiConfig)).text)
 	if allRecords["status"]=="ERROR":
 		print('Error getting domain. Check to make sure you specified the correct domain, and that API access has been switched on for this domain.');
-    print('If all else fails, check if this API is still available as the original script was deprecated 03.14.23');
 		sys.exit();
 	return(allRecords)
 	
@@ -53,4 +52,4 @@ if len(sys.argv)>2: #at least the config and root domain is specified
 	print(createRecord()["status"])
 	
 else:
-	print("Error: not enough arguments. Examples:\npython ddns.py /path/to/config.json example.com\npython ddns.py /path/to/config.json example.com www\npython ddns.py /path/to/config.json example.com '*'\npython ddns.py /path/to/config.json example.com -i 10.0.0.1\n")
+	print("Porkbun Dynamic DNS client, Python Edition\n\nError: not enough arguments. Examples:\npython porkbun-ddns.py /path/to/config.json example.com\npython porkbun-ddns.py /path/to/config.json example.com www\npython porkbun-ddns.py /path/to/config.json example.com '*'\npython porkbun-ddns.py /path/to/config.json example.com -i 10.0.0.1\n")
